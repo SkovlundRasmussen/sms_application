@@ -2,13 +2,25 @@ package controller;
 
 import model.User;
 
-/**
- * Created by krist on 31-03-2017.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class controller implements iController {
 
+//
+    List<User> users = new ArrayList<>();
+
+
     @Override
-    public void sendSMS(User user) {
+    public void sendSMS(User user, String msg)
+    {
+
 
     }
+
+    public List<User> getUsers(List<User> userList)
+    {
+        return userList;
+    }
+
 }
