@@ -1,7 +1,13 @@
 package view;
 
-/**
- * Created by krist on 31-03-2017.
- */
-public class view {
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class view extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+    }
 }
