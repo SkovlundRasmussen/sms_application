@@ -4,13 +4,10 @@ import java.sql.*;
 import java.util.List;
 
 public class model implements iModel {
+    User user;
 
-/*    public static void main(String[] args)
-    {
 
-    }*/
-
-    public static void connectToBD()
+    public void connectToBD()
     {
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
         String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11167340";
@@ -29,9 +26,14 @@ public class model implements iModel {
 
             //
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, userName, pass );
+            conn = DriverManager.getConnection(DB_URL, userName, pass);
+
+/*                //Testing
+                System.out.println(conn.getClientInfo());*/
+
 
             //
+
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
@@ -39,18 +41,19 @@ public class model implements iModel {
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
 
-            while (rs.next())
-            {
+              while (rs.next())
+              {
+                  int id = rs.getInt("user_ID");
+                  int numb = rs.getInt("number");
+                  String name = rs.getString("name");
+                  //public List<User> getUsers();
 
-            }
-/*            if (rs.next())
-            {
-                bResult = true;
-            }
-            else
-            {
-                bResult = false;
-            }*/
+                  //System.out.println(id + " " + numb + " " + name);
+
+                  user = new User(id, name, numb);
+                  System.out.println(id + " " + numb + " " + name);
+              }
+
 
             rs.close();
             stmt.close();
