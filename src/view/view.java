@@ -1,6 +1,6 @@
 package view;
 
-
+import model.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,7 +21,11 @@ public class view extends Application {
     private VBox vBox;
 
     public static void main(String[] args) {
-        launch(args);
+        model dbModel = new model();
+
+        dbModel.connectToBD();
+
+        //launch(args);
     }
 
     @Override

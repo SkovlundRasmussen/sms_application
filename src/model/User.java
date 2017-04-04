@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Created by krist on 31-03-2017.
- */
 public class User {
 
     int user_id;
@@ -16,29 +13,35 @@ public class User {
         this.number = number;
     }
 
-    public int getNumber() {
+    public int getNumber()
+    {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(int number)
+    {
         this.number = number;
     }
 
-    public String getName() {
+    public String getName()
+    {
 
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getUser_id() {
+    public int getUser_id()
+    {
 
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(int user_id)
+    {
         this.user_id = user_id;
     }
 }

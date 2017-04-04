@@ -5,10 +5,19 @@ import java.util.List;
 
 public class model implements iModel {
 
+/*    public static void main(String[] args)
+    {
+
+    }*/
+
     public static void connectToBD()
     {
         String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net/sql11167340";
+        String DB_URL = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11167340";
+
+        String userName = "sql11167340";
+        String pass = "6ZquUXTW4B";
+
 
         Connection conn = null;
         Statement stmt = null;
@@ -20,16 +29,20 @@ public class model implements iModel {
 
             //
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL);
+            conn = DriverManager.getConnection(DB_URL, userName, pass );
 
             //
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM users";
+            sql = "SELECT * FROM Users";
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
 
+            while (rs.next())
+            {
+
+            }
 /*            if (rs.next())
             {
                 bResult = true;
