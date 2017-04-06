@@ -4,5 +4,5 @@ import model.User;
 
 public interface iController {
 
-    public void sendSMS(User user, String msg);
+    public void sendSMS(User user, String msg) throws Exception;
 }
