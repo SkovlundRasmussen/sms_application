@@ -44,18 +44,11 @@ public class model implements iModel {
                   int id = rs.getInt("user_ID");
                   int numb = rs.getInt("number");
                   String name = rs.getString("name");
-                  //public List<User> getUsers();
 
                   user = new User(id, name, numb);
                   userList.add(user);
 
-                  // Testing
-/*                  for( int i = 0; i < userList.size(); i++)
-                    {
-                        System.out.println(userList.get(i));
-                    }*/
-
-                    System.out.println(id + " " + numb + " " + name);
+                  System.out.println(id + " " + numb + " " + name);
               }
 
             rs.close();

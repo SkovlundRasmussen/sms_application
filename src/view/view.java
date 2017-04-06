@@ -1,6 +1,8 @@
 package view;
 
+import javafx.event.ActionEvent;
 import model.*;
+import controller.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,22 +12,27 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class view extends Application {
 
     private Stage stage;
     private Scene scene;
     private TextField textField;
     private Button btnSend;
-    private ComboBox comboBoxUsers;
     private GridPane gridPane;
     private VBox vBox;
+
+    private ComboBox comboBoxUsers;
+    controller controller_instance = new controller();
 
     public static void main(String[] args) {
         model dbModel = new model();
 
-        dbModel.connectToBD();
+        //dbModel.connectToBD();
 
-        //launch(args);
+        launch(args);
     }
 
     @Override
@@ -33,9 +40,11 @@ public class view extends Application {
         stage = primaryStage;
 
         btnSend = new Button("Send");
+        btnSend.setOnAction(this::sendMsg);
         textField = new TextField();
         textField.setMinSize(300, 300);
         comboBoxUsers = new ComboBox();
+        fillCombobox(comboBoxUsers);
         vBox = new VBox();
         gridPane = new GridPane();
 
@@ -46,4 +55,23 @@ public class view extends Application {
         stage.show();
 
     }
+
+    private void sendMsg(ActionEvent event) {
+
+    }
+
+    public ComboBox fillCombobox(ComboBox cb)
+    {
+
+        List<User> Users = controller_instance.getUsers();
+
+        for(int i = 0; i < Users.size(); i++)
+        {
+        cb.getItems().addAll(Users.get(i).getName());
+        };
+
+
+        return cb;
+    }
+
 }

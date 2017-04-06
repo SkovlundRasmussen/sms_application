@@ -7,6 +7,8 @@ import model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.*;
+
 import com.nexmo.client.NexmoClient;
 import com.nexmo.client.auth.AuthMethod;
 import com.nexmo.client.auth.TokenAuthMethod;
@@ -18,6 +20,7 @@ import static nexo_quickstart.Util.*;
 
 public class controller implements iController {
 
+    model model_instance = new model();
     List<User> users = new ArrayList<>();
 
 
@@ -47,9 +50,10 @@ public class controller implements iController {
         }
     }
 
-    public List<User> getUsers(List<User> userList)
+    public List<User> getUsers()
     {
-        return userList;
+
+        return model_instance.connectToBD();
     }
 
 }
