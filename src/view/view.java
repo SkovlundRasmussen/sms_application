@@ -1,5 +1,6 @@
 package view;
 
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import model.*;
 import controller.*;
@@ -40,7 +41,9 @@ public class view extends Application {
         stage = primaryStage;
 
         btnSend = new Button("Send");
-        btnSend.setOnAction(this::sendMsg);
+        btnSend.setOnAction(event -> {
+            sendMsg(event);
+        });
         textField = new TextField();
         textField.setMinSize(300, 300);
         comboBoxUsers = new ComboBox();
@@ -57,7 +60,16 @@ public class view extends Application {
     }
 
     private void sendMsg(ActionEvent event) {
+        try {
+            String number = comboBoxUsers.getValue().toString();
+            String msg = textField.getText();
 
+            controller_instance.sendSMS(number, msg);
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
     public ComboBox fillCombobox(ComboBox cb)
@@ -67,9 +79,10 @@ public class view extends Application {
 
         for(int i = 0; i < Users.size(); i++)
         {
-        cb.getItems().addAll(Users.get(i).getName());
-        };
-
+            cb.getItems().addAll(Users.get(i).getNumber());
+        }
+        cb.setValue("Numre");
+  /*    cb.getItems().addAll(Users);*/
 
         return cb;
     }

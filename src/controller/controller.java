@@ -25,16 +25,16 @@ public class controller implements iController {
 
 
     @Override
-    public void sendSMS(User user, String msg)  throws Exception
-    {
-        int user_number = user.getNumber();
+    public void sendSMS(String number, String msg)  throws Exception
+    {/*
+        int user_number = user.getNumber();*/
 
         configureLogging();
 
         String API_KEY = "e6c0d20c";
         String API_SECRET = "d2b99f88afcc436d";
-        String TO_NUMBER = Integer.toString(user_number);
-        String FROM_NUMBER = "004531340753";
+        String TO_NUMBER = "0045" + number;
+        String FROM_NUMBER = "Test";
 
 
             AuthMethod auth = new TokenAuthMethod(API_KEY, API_SECRET);
