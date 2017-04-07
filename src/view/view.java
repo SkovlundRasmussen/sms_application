@@ -2,6 +2,7 @@ package view;
 
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextArea;
 import model.*;
 import controller.*;
 import javafx.application.Application;
@@ -13,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class view extends Application {
 
     private Stage stage;
     private Scene scene;
-    private TextField textField;
+    private TextField textField, textFieldSender;
+    private TextArea textArea;
     private Button btnSend;
     private GridPane gridPane;
     private VBox vBox;
@@ -45,13 +48,15 @@ public class view extends Application {
             sendMsg(event);
         });
         textField = new TextField();
-        textField.setMinSize(300, 300);
+        textArea = new TextArea();
+        textArea.setPrefColumnCount(10);
+        textFieldSender = new TextField();
         comboBoxUsers = new ComboBox();
         fillCombobox(comboBoxUsers);
         vBox = new VBox();
         gridPane = new GridPane();
 
-        vBox.getChildren().addAll(textField, comboBoxUsers, btnSend);
+        vBox.getChildren().addAll(textArea, textFieldSender, comboBoxUsers, btnSend);
         scene = new Scene(vBox);
 
         stage.setScene(scene);
@@ -62,9 +67,10 @@ public class view extends Application {
     private void sendMsg(ActionEvent event) {
         try {
             String number = comboBoxUsers.getValue().toString();
-            String msg = textField.getText();
+            String msg = textArea.getText();
+            String sender = textFieldSender.getText();
 
-            controller_instance.sendSMS(number, msg);
+            controller_instance.sendSMS(number, msg, sender);
         }
         catch (Exception e)
         {
